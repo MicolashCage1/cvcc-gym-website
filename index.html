@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CVCC — Boxing, Jiu Jitsu, Kickboxing, Judo, Fitness</title>
+<meta name="description" content="Boxing, jiu jitsu, kickboxing, judo, fitness and a full weight room under one roof in Castro Valley, CA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Inter+Tight:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#0B0B0A}
+a{color:#ECE8DF;text-decoration:none;transition:color .25s}
+a:hover{color:var(--ac)}
+.p{font-family:'Inter Tight',system-ui,sans-serif;color:#ECE8DF;background:#0B0B0A;overflow-x:clip;-webkit-font-smoothing:antialiased}
+.d{font-family:'Anton',Impact,sans-serif;text-transform:uppercase;font-weight:400;line-height:.86;letter-spacing:.004em;margin:0}
+.m{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.wrap{max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,56px);box-sizing:border-box}
+.dim{color:#9C988F}
+.ol{color:transparent;-webkit-text-stroke:1.5px #ECE8DF}
+
+/* marquees */
+.mq{display:flex;overflow:hidden;white-space:nowrap}
+.mq-t{display:flex;flex-shrink:0;align-items:center;gap:48px;padding-right:48px;animation:mq 30s linear infinite}
+.mq-fast .mq-t{animation-duration:18s}
+.mq-rev .mq-t{animation-direction:reverse}
+@keyframes mq{to{transform:translateX(-100%)}}
+
+/* hero intro */
+.cur{position:absolute;inset:0;z-index:30;transform-origin:top;animation:cur 1.1s cubic-bezier(.77,0,.18,1) forwards;pointer-events:none}
+@keyframes cur{to{transform:scaleY(0)}}
+.ln{display:block;overflow:hidden;padding-bottom:.04em}
+.ln>span{display:block;transform:translateY(108%);animation:up 1.1s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes up{to{transform:none}}
+.fade{opacity:0;animation:fd .9s ease forwards}
+@keyframes fd{to{opacity:1}}
+
+/* video placeholders */
+.vid{position:relative;overflow:hidden;background:#141412}
+.vid .kb{position:absolute;inset:-6%;background:radial-gradient(60% 50% at 30% 40%,#2A2925 0%,#141412 70%),#141412;animation:kb 18s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1) translate(0,0)}to{transform:scale(1.12) translate(-2%,-2%)}}
+.vid::before{content:'';position:absolute;inset:0;z-index:2;background:repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 3px);pointer-events:none}
+.vid::after{content:'';position:absolute;inset:0;z-index:3;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.07) 50%,transparent 65%);background-size:250% 100%;animation:sw 6s linear infinite;pointer-events:none}
+@keyframes sw{from{background-position:120% 0}to{background-position:-120% 0}}
+.vlab{position:absolute;z-index:4;left:20px;bottom:18px;display:flex;align-items:center;gap:10px;color:#9C988F}
+.rec{width:8px;height:8px;border-radius:50%;background:var(--ac);animation:bl 1.4s steps(2) infinite}
+@keyframes bl{50%{opacity:0}}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,11,10,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(236,232,223,.1)}
+.nl a{display:inline-flex;gap:8px;align-items:baseline;min-height:44px;align-items:center}
+.nl a .m{color:#6F6C66;font-size:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 22px;border-radius:999px;background:var(--ac);color:#0B0B0A;font-weight:600;font-size:15px;position:relative;overflow:hidden;transition:transform .3s}
+.btn span{position:relative;z-index:1}
+.btn::before{content:'';position:absolute;inset:0;background:#ECE8DF;transform:translateY(101%);transition:transform .45s cubic-bezier(.7,0,.2,1)}
+.btn:hover{color:#0B0B0A;transform:translateY(-2px)}
+.btn:hover::before{transform:none}
+.btn-gh{background:transparent;color:#ECE8DF;border:1px solid rgba(236,232,223,.35)}
+.btn-gh::before{background:#ECE8DF}
+.btn-gh:hover{color:#0B0B0A}
+.arr{transition:transform .35s}
+.btn:hover .arr,.lk:hover .arr{transform:translateX(5px) rotate(-45deg)}
+
+/* discipline rows */
+.dr{position:relative;display:grid;grid-template-columns:90px minmax(0,1fr) auto;align-items:center;column-gap:24px;padding:26px 0;border-top:1px solid rgba(236,232,223,.16);color:#ECE8DF;overflow:hidden}
+.dr::before{content:'';position:absolute;inset:0;background:var(--ac);transform:scaleY(0);transform-origin:bottom;transition:transform .55s cubic-bezier(.7,0,.2,1);z-index:0}
+.dr>*{position:relative;z-index:1}
+a.dr:hover{color:#0B0B0A}
+.dr:hover::before{transform:scaleY(1);transform-origin:top}
+.dr .nm{font-size:clamp(56px,9.5vw,148px);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.dr:hover .nm{transform:translateX(28px)}
+.dr .tg{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.chip{border:1px solid currentColor;border-radius:999px;padding:6px 12px;opacity:.8}
+.dr .more{grid-column:1/-1;display:grid;grid-template-rows:0fr;transition:grid-template-rows .55s cubic-bezier(.7,0,.2,1)}
+.dr:hover .more{grid-template-rows:1fr}
+.more>div{overflow:hidden}
+.dr .ix{color:#6F6C66;transition:color .3s}
+.dr:hover .ix{color:#0B0B0A}
+
+/* stacked sticky */
+.stk{position:sticky;top:96px;border-radius:28px;min-height:520px;box-sizing:border-box;padding:clamp(28px,4vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:40px;align-items:stretch;box-shadow:0 -30px 60px rgba(0,0,0,.35)}
+
+/* coach cards */
+.cc{display:flex;flex-direction:column;gap:14px;color:#ECE8DF}
+.cc .vid{aspect-ratio:3/4;border-radius:18px}
+.cc .vid .kb{transition:transform .9s cubic-bezier(.2,.8,.2,1);animation:none;filter:grayscale(1)}
+.cc:hover .vid .kb{transform:scale(1.12)}
+.cc .hov{position:absolute;z-index:5;inset:auto 0 0 0;padding:20px;background:var(--ac);color:#0B0B0A;transform:translateY(101%);transition:transform .5s cubic-bezier(.7,0,.2,1)}
+.cc:hover .hov{transform:none}
+
+/* tiers */
+.tier{border:1px solid rgba(236,232,223,.16);border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:22px;transition:transform .5s cubic-bezier(.2,.8,.2,1),border-color .3s}
+.tier:hover{transform:translateY(-8px);border-color:var(--ac)}
+.tier ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.tier li{display:flex;gap:12px;align-items:flex-start;font-size:15px;line-height:1.4}
+.dot{width:6px;height:6px;margin-top:8px;background:var(--ac);flex-shrink:0}
+
+/* schedule */
+.day{min-height:48px;min-width:64px;padding:0 18px;border-radius:999px;font:500 12px/1 'JetBrains Mono',monospace;letter-spacing:.08em;cursor:pointer;transition:background .3s,color .3s,border-color .3s}
+.srow{display:grid;grid-template-columns:120px minmax(0,1.4fr) minmax(0,1fr) auto;gap:20px;align-items:center;padding:22px 0;border-top:1px solid rgba(236,232,223,.14);animation:sr .5s cubic-bezier(.2,.8,.2,1) both}
+@keyframes sr{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+input.em{flex:1;min-width:0;min-height:52px;background:transparent;border:0;border-bottom:1px solid rgba(236,232,223,.35);color:#ECE8DF;font:500 18px 'Inter Tight',sans-serif;padding:0 4px;outline:none}
+input.em:focus{border-color:var(--ac)}
+input.em::placeholder{color:#7D7A73}
+
+/* real media */
+.med{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;display:block;transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.vid::after{background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.035) 50%,transparent 65%)}
+.vid::before{background:repeating-linear-gradient(0deg,rgba(0,0,0,.18) 0 1px,transparent 1px 3px)}
+.card:hover .med,.cc:hover .med{transform:scale(1.08)}
+.card .shade{position:absolute;inset:0;z-index:4;background:linear-gradient(180deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,0) 32%,rgba(0,0,0,0) 50%,rgba(0,0,0,.7) 100%)}
+.cc .med{filter:grayscale(.35) contrast(1.05)}
+.cc:hover .med{filter:none}
+/* ecosystem builder */
+.tile{position:relative;min-height:150px;border-radius:20px;border:1px solid rgba(236,232,223,.18);padding:22px;display:flex;flex-direction:column;justify-content:space-between;text-align:left;cursor:pointer;font-family:inherit;transition:background .35s,color .35s,border-color .35s,transform .35s cubic-bezier(.2,.8,.2,1)}
+.tile:hover{transform:translateY(-4px);border-color:var(--ac)}
+.tick{width:26px;height:26px;border-radius:50%;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center}
+.big-n{font-family:'Anton',sans-serif;font-size:clamp(120px,14vw,220px);line-height:.8;color:var(--ac);transition:transform .4s}
+.mini{min-height:44px;padding:0 18px;border-radius:999px;background:transparent;color:#ECE8DF;border:1px solid rgba(236,232,223,.3);font:500 12px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.mini:hover{border-color:var(--ac);color:var(--ac)}
+
+/* card wheel (Huge-style) */
+.pin{position:relative}
+.pin-in{position:relative;height:900px;overflow:clip}
+.wheel{position:absolute;left:50%;top:2120px;width:0;height:0;transform:rotate(-30deg)}
+.spoke{position:absolute;left:0;top:0;width:0;height:0;transform:rotate(calc(var(--i) * 21deg))}
+.card{position:absolute;left:-230px;top:-1770px;display:block;width:460px;height:520px;border-radius:26px;color:#fff;box-shadow:0 40px 90px rgba(0,0,0,.55)}
+.card .ct{position:absolute;z-index:5;left:28px;right:28px;bottom:28px;margin:0;font:600 44px/1 'Inter Tight',sans-serif;letter-spacing:-.035em;text-shadow:0 2px 24px rgba(0,0,0,.35)}
+.card .top{position:absolute;z-index:5;top:24px;left:28px;right:28px;display:flex;justify-content:space-between;color:rgba(255,255,255,.85)}
+.card:hover{color:#fff}
+.card .kb{animation:none;transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.card:hover .kb{transform:scale(1.08)}
+.card img,.card video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+.card .shade{position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,.55) 100%)}
+
+/* scroll-driven motion (Chrome/Edge; others show the static layout) */
+@supports (animation-timeline: view()){
+.pin{height:3600px;view-timeline-name:--pin}
+.pin-in{position:sticky;top:76px}
+.wheel{animation:whl linear both;animation-timeline:--pin;animation-range:contain 0% contain 100%}
+@keyframes whl{from{transform:rotate(32deg)}to{transform:rotate(-140deg)}}
+.pin-h{animation:pinh linear both;animation-timeline:--pin;animation-range:contain 0% contain 35%}
+@keyframes pinh{to{transform:translateY(-60px);filter:blur(8px);opacity:.35}}
+.rv{animation:rv linear both;animation-timeline:view();animation-range:entry 0% entry 55%}
+@keyframes rv{from{opacity:0;transform:translateY(70px)}to{opacity:1;transform:none}}
+.wd{animation:wd linear both;animation-timeline:view();animation-range:entry 20% cover 42%}
+@keyframes wd{from{opacity:.1;filter:blur(6px)}to{opacity:1;filter:none}}
+.zm{animation:zm linear both;animation-timeline:view();animation-range:entry 0% cover 60%}
+@keyframes zm{from{clip-path:inset(18% 22% 18% 22% round 32px);transform:scale(1.15)}to{clip-path:inset(0 0 0 0 round 0px);transform:none}}
+.hx{animation:hx linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+@keyframes hx{from{transform:translateX(8%)}to{transform:translateX(-38%)}}
+.hx2{animation:hx2 linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+@keyframes hx2{from{transform:translateX(-30%)}to{transform:translateX(5%)}}
+.out{animation:out linear both;animation-timeline:view();animation-range:exit 0% exit 100%}
+@keyframes out{to{transform:translateY(-140px);opacity:.15}}
+.spin{animation:spn linear both;animation-timeline:scroll();}
+@keyframes spn{to{transform:rotate(720deg)}}
+}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}.ln>span{transform:none}.fade{opacity:1}.cur{display:none}}
+@media (max-width: 860px){.nl{display:none!important}.dr{grid-template-columns:48px minmax(0,1fr)}.dr .tg{display:none}.srow{grid-template-columns:90px minmax(0,1fr)}.srow .hide-s{display:none}}
+</style>
+<style>html{scroll-behavior:smooth}</style>
+</head>
+<body>
+<div class="p" style="--ac: #FF3B1F; min-height: 100vh">
+
+<!-- announcement marquee -->
+<div class="mq m mq-fast" style="background: var(--ac); color: #0B0B0A; padding: 10px 0; font-size: 11px; font-weight: 500">
+<div class="mq-t"><span>First class free</span><span>/</span><span>Boxing</span><span>/</span><span>Brazilian Jiu Jitsu</span><span>/</span><span>Kickboxing &amp; Muay Thai</span><span>/</span><span>Strength &amp; Conditioning</span><span>/</span><span>Castro Valley, CA</span><span>/</span></div>
+<div class="mq-t" aria-hidden="true"><span>First class free</span><span>/</span><span>Boxing</span><span>/</span><span>Brazilian Jiu Jitsu</span><span>/</span><span>Kickboxing &amp; Muay Thai</span><span>/</span><span>Strength &amp; Conditioning</span><span>/</span><span>Castro Valley, CA</span><span>/</span></div>
+</div>
+
+<!-- nav -->
+<header class="nav">
+<div class="wrap" style="display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 76px">
+<a href="#top" style="display: flex; align-items: center; gap: 12px" aria-label="CVCC home">
+<svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true" class="spin"><circle cx="17" cy="17" r="15.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 3"></circle><path d="M17 6 L20 17 L17 28 L14 17 Z" fill="var(--ac)"></path></svg>
+<span class="d" style="font-size: 30px; line-height: 1">CVCC</span>
+<span class="m dim" style="font-size: 10px; line-height: 1.3; max-width: 110px">Castro Valley Combat Club</span>
+</a>
+<nav class="nl" style="display: flex; gap: 32px; font-size: 15px; font-weight: 500">
+<a href="#disciplines"><span class="m">[01]</span>Disciplines</a>
+<a href="#schedule"><span class="m">[02]</span>Schedule</a>
+<a href="#coaches"><span class="m">[03]</span>Coaches</a>
+<a href="#membership"><span class="m">[04]</span>Membership</a>
+</nav>
+<a class="btn" href="#join"><span>Book a free class</span><span class="arr">→</span></a>
+</div>
+</header>
+
+<!-- HERO -->
+<section id="top" style="position: relative; height: 900px; min-height: 640px; overflow: clip">
+<div class="cur" style="background: var(--ac); animation-delay: .35s"></div>
+<div class="cur" style="background: #ECE8DF; animation-delay: .15s"></div>
+<div class="vid" style="position: absolute; inset: 0">
+<video class="med" src="media/hero.mp4" autoplay="" muted="" loop="" playsinline="" preload="auto"></video>
+
+</div>
+<div style="position: absolute; inset: 0; z-index: 4; background: linear-gradient(180deg, rgba(11,11,10,.15) 0%, rgba(11,11,10,.0) 40%, rgba(11,11,10,.92) 100%)"></div>
+<div class="wrap out" style="position: relative; z-index: 6; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: 72px">
+<div class="m fade" style="display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 28px; animation-delay: 1.5s"><span style="color: var(--ac)">[ 001 ]</span><span>One roof</span><span class="dim">/</span><span>Five disciplines</span><span class="dim">/</span><span>Zero egos</span></div>
+<h1 class="d" style="font-size: clamp(64px, 11vw, 176px)">
+<span class="ln"><span style="animation-delay: 1.05s">Earn it</span></span>
+<span class="ln"><span style="animation-delay: 1.2s"><span class="ol" style="-webkit-text-stroke-width: 2px">every</span> <span style="color: var(--ac)">round.</span></span></span>
+</h1>
+<div class="fade" style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 32px; margin-top: 36px; animation-delay: 1.7s">
+<p style="margin: 0; max-width: 460px; font-size: 19px; line-height: 1.5; color: #CFCBC2">Boxing, jiu jitsu, kickboxing, judo, fitness and a full weight room under one roof. Train one, mix a few, or do it all. Beginners welcome.</p>
+<div style="display: flex; gap: 12px; flex-wrap: wrap">
+<a class="btn" href="#join"><span>Claim your free class</span><span class="arr">→</span></a>
+<a class="btn btn-gh" href="#schedule"><span>See the schedule</span></a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- big outline marquee -->
+<section aria-label="Disciplines" style="padding: 44px 0; border-bottom: 1px solid rgba(236,232,223,.1); overflow: clip">
+<div class="hx" style="display: flex; gap: 48px; white-space: nowrap; font-size: clamp(64px, 10vw, 150px)">
+<span class="d ol">Boxing</span><span class="d" style="color: var(--ac)">/</span><span class="d">Jiu Jitsu</span><span class="d" style="color: var(--ac)">/</span><span class="d ol">Kickboxing</span><span class="d" style="color: var(--ac)">/</span><span class="d">Judo</span><span class="d" style="color: var(--ac)">/</span><span class="d ol">Fitness</span><span class="d" style="color: var(--ac)">/</span><span class="d">Boxing</span>
+</div>
+</section>
+
+<!-- DISCIPLINES -->
+<section id="disciplines" style="padding: 140px 0 120px">
+<div class="wrap">
+<div class="rv" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 56px">
+<div>
+<div class="m" style="color: var(--ac); margin-bottom: 18px">[ 01 ] The ecosystem</div>
+<h2 class="d" style="font-size: clamp(48px, 6vw, 88px)">Pick a lane.<br><span class="ol">Or take them all.</span></h2>
+</div>
+<p class="dim" style="margin: 0; max-width: 380px; font-size: 17px; line-height: 1.55">One membership opens every mat, ring and rack in the building. Hover a discipline to see what a class looks like.</p>
+</div>
+
+<a class="dr" href="#schedule">
+<span class="m ix">[ 01 ]</span><span class="d nm">Jiu Jitsu</span>
+<span class="tg m"><span class="chip">Gi</span><span class="chip">No-gi</span><span class="chip">Fundamentals</span></span>
+<div class="more"><div><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 24px; padding: 26px 0 8px 114px">
+<p style="margin: 0; font-size: 17px; line-height: 1.5">Positional drilling, live rolling, and a curriculum that takes you from first shrimp to black belt.</p>
+<div class="vid" style="height: 180px; border-radius: 14px"><video class="med" src="media/h_bjj.mp4" autoplay="" muted="" loop="" playsinline="" preload="auto"></video></div>
+</div></div></div>
+</a>
+<a class="dr" href="#schedule">
+<span class="m ix">[ 02 ]</span><span class="d nm">Boxing</span>
+<span class="tg m"><span class="chip">Technique</span><span class="chip">Bag work</span><span class="chip">Sparring</span></span>
+<div class="more"><div><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 24px; padding: 26px 0 8px 114px">
+<p style="margin: 0; font-size: 17px; line-height: 1.5">Footwork, defense and combinations — taught in rounds, finished on the heavy bags.</p>
+<div class="vid" style="height: 180px; border-radius: 14px"><video class="med" src="media/h_box.mp4" autoplay="" muted="" loop="" playsinline="" preload="auto"></video></div>
+</div></div></div>
+</a>
+<a class="dr" href="#schedule">
+<span class="m ix">[ 03 ]</span><span class="d nm">Kickboxing</span>
+<span class="tg m"><span class="chip">Muay Thai</span><span class="chip">Pads</span><span class="chip">Clinch</span></span>
+<div class="more"><div><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 24px; padding: 26px 0 8px 114px">
+<p style="margin: 0; font-size: 17px; line-height: 1.5">Eight limbs, one game plan. Kicks, knees, elbows and clinch work on pads and with partners.</p>
+<div class="vid" style="height: 180px; border-radius: 14px"><video class="med" src="media/h_kick.mp4" autoplay="" muted="" loop="" playsinline="" preload="auto"></video></div>
+</div></div></div>
+</a>
+<a class="dr" href="#schedule">
+<span class="m ix">[ 04 ]</span><span class="d nm">Judo</span>
+<span class="tg m"><span class="chip">Throws</span><span class="chip">Grips</span><span class="chip">Newaza</span></span>
+<div class="more"><div><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 24px; padding: 26px 0 8px 114px">
+<p style="margin: 0; font-size: 17px; line-height: 1.5">Grip fighting, breakfalls and big throws — the perfect complement to jiu jitsu on the ground.</p>
+<div class="vid" style="height: 180px; border-radius: 14px"><img class="med" src="media/h_judo.jpg" alt=""></div>
+</div></div></div>
+</a>
+<a class="dr" href="#schedule" style="border-bottom: 1px solid rgba(236,232,223,.16)">
+<span class="m ix">[ 05 ]</span><span class="d nm">Fitness</span>
+<span class="tg m"><span class="chip">CrossFit-style</span><span class="chip">Weight room</span><span class="chip">Conditioning</span></span>
+<div class="more"><div><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 24px; padding: 26px 0 8px 114px">
+<p style="margin: 0; font-size: 17px; line-height: 1.5">A full weight floor built for fighters: strength blocks, conditioning circuits and open hours.</p>
+<div class="vid" style="height: 180px; border-radius: 14px"><video class="med" src="media/h_fit.mp4" autoplay="" muted="" loop="" playsinline="" preload="auto"></video></div>
+</div></div></div>
+</a>
+</div>
+</section>
+
+<!-- ECOSYSTEM BUILDER -->
+<section id="build" style="padding: 40px 0 160px">
+<div class="wrap">
+<div class="rv" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 48px">
+<div>
+<div class="m" style="color: var(--ac); margin-bottom: 18px">[ 02 ] Build your week</div>
+<h2 class="d" style="font-size: clamp(48px, 6.4vw, 96px)">One class. Two. Three.<br><span class="ol">Or all of it.</span></h2>
+</div>
+<p class="dim" style="margin: 0; max-width: 400px; font-size: 17px; line-height: 1.55">Your gym, your mix. Tap what you want to train. Just here for the weights? That works too.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr)); gap: 24px; align-items: stretch">
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr)); gap: 14px">
+<span id="tiles" style="display: contents"></span>
+</div>
+<div style="border-radius: 24px; background: #151513; border: 1px solid rgba(236,232,223,.1); padding: clamp(28px, 3.5vw, 44px); display: flex; flex-direction: column; justify-content: space-between; gap: 28px; min-height: 480px">
+<div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap">
+<div class="m dim">Your mix</div>
+<div style="display: flex; gap: 8px"><button class="mini" type="button" id="selAll">Try everything</button><button class="mini" type="button" id="clr">Clear</button></div>
+</div>
+<div style="display: flex; align-items: flex-end; gap: 22px; flex-wrap: wrap">
+<span class="big-n" id="bn">02</span>
+<span style="padding-bottom: 14px"><span class="m dim" style="display: block; margin-bottom: 8px" id="unit"></span><span style="font-size: 17px; line-height: 1.45; max-width: 260px; display: block" id="picked"></span></span>
+</div>
+<div style="border-top: 1px solid rgba(236,232,223,.12); padding-top: 26px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px">
+<div><div class="m" style="color: var(--ac); margin-bottom: 10px">Recommended plan</div><div class="d" style="font-size: 54px; line-height: .9" id="plan"></div><p class="dim" style="margin: 10px 0 0; font-size: 15px; line-height: 1.5; max-width: 340px" id="planNote"></p></div>
+<a class="btn" href="#membership"><span>See membership</span><span class="arr">→</span></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- MANIFESTO -->
+<section style="padding: 80px 0 160px">
+<div class="wrap">
+<div class="m dim" style="margin-bottom: 36px">[ 002 ] What we believe</div>
+<p class="d" style="font-size: clamp(48px, 7.4vw, 112px); line-height: .95; max-width: 1280px">
+<span class="wd">Leave</span> <span class="wd">the</span> <span class="wd">ego</span> <span class="wd">at</span> <span class="wd">the</span> <span class="wd" style="color: var(--ac)">door.</span> <span class="wd ol">Bring</span> <span class="wd ol">the</span> <span class="wd ol">work.</span> <span class="wd">Everyone</span> <span class="wd">here</span> <span class="wd">was</span> <span class="wd">a</span> <span class="wd">white</span> <span class="wd">belt</span> <span class="wd">once.</span>
+</p>
+</div>
+</section>
+
+<!-- CARD WHEEL -->
+<section class="pin" aria-label="Classes">
+<div class="pin-in">
+<div class="wrap pin-h" style="position: absolute; top: 56px; left: 0; right: 0; z-index: 10; pointer-events: none">
+<h2 style="margin: 0; font: 600 clamp(64px, 8.6vw, 132px)/.9 'Inter Tight', sans-serif; letter-spacing: -.05em">More than one<br>way to fight.</h2>
+<p style="margin: 22px 0 0; max-width: 620px; font: 500 clamp(20px, 2vw, 30px)/1.15 'Inter Tight', sans-serif; letter-spacing: -.025em">Five disciplines under one roof. Train one, or train them all — your membership covers every class.</p>
+</div>
+<div class="wheel">
+<div class="spoke" style="--i: 0">
+<a class="card vid" href="#schedule">
+<video class="med" src="media/card_boxing.mp4" autoplay="" muted="" loop="" playsinline="" preload="auto"></video>
+<div class="shade"></div><div class="top m"><span>[ 01 ]</span><span>Boxing</span></div>
+
+<p class="ct">Hands up.<br>Chin down.<br>Throw it back.</p>
+</a>
+</div>
+<div class="spoke" style="--i: 1">
+<a class="card vid" href="#schedule">
+<video class="med" src="media/card_kick.mp4" autoplay="" muted="" loop="" playsinline="" preload="auto"></video>
+<div class="shade"></div><div class="top m"><span>[ 02 ]</span><span>Kickboxing</span></div>
+
+<p class="ct">Eight limbs.<br>One game plan.</p>
+</a>
+</div>
+<div class="spoke" style="--i: 2">
+<a class="card vid" href="#schedule">
+<video class="med" src="media/card_fit.mp4" autoplay="" muted="" loop="" playsinline="" preload="auto"></video>
+<div class="shade"></div><div class="top m"><span>[ 03 ]</span><span>Fitness</span></div>
+
+<p class="ct">CrossFit-style<br>conditioning for<br>fighters.</p>
+</a>
+</div>
+<div class="spoke" style="--i: 3">
+<a class="card vid" href="#schedule">
+<video class="med" src="media/card_bjj.mp4" autoplay="" muted="" loop="" playsinline="" preload="auto"></video>
+<div class="shade"></div><div class="top m" style="color: rgba(11,11,10,.75)"><span>[ 04 ]</span><span>Jiu Jitsu</span></div>
+
+<p class="ct" style="color: #0B0B0A; text-shadow: none">The gentle art.<br>Not so gentle.</p>
+</a>
+</div>
+<div class="spoke" style="--i: 4">
+<a class="card vid" href="#schedule">
+<img class="med" src="media/card_judo.jpg" alt="">
+<div class="shade"></div><div class="top m"><span>[ 05 ]</span><span>Judo</span></div>
+
+<p class="ct">Grip. Off-balance.<br>Throw.</p>
+</a>
+</div>
+<div class="spoke" style="--i: 5">
+<a class="card vid" href="#schedule">
+<video class="med" src="media/card_kids.mp4" autoplay="" muted="" loop="" playsinline="" preload="auto"></video>
+<div class="shade"></div><div class="top m" style="color: rgba(11,11,10,.75)"><span>[ 06 ]</span><span>Kids</span></div>
+
+<p class="ct" style="color: #0B0B0A; text-shadow: none">Confidence<br>starts young.</p>
+</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FULL-BLEED VIDEO REVEAL -->
+<section style="padding: 0 0 140px">
+<div class="vid zm" style="height: 780px">
+<video class="med" src="media/inside.mp4" autoplay="" muted="" loop="" playsinline="" preload="auto"></video>
+
+<div style="position: absolute; inset: 0; z-index: 5; display: flex; align-items: center; justify-content: center; text-align: center">
+<h2 class="d" style="font-size: clamp(64px, 12vw, 190px); mix-blend-mode: difference; color: #ECE8DF">Inside<br>the gym</h2>
+</div>
+</div>
+</section>
+
+<!-- horizontal moving gallery -->
+<section aria-label="Gallery" style="padding: 0 0 160px; overflow: clip">
+<div class="hx2" style="display: flex; gap: 20px; width: max-content">
+<div class="vid" style="width: 460px; height: 320px; border-radius: 20px"><video class="med" src="media/g_wrap.mp4" autoplay="" muted="" loop="" playsinline="" preload="auto"></video></div>
+<div class="vid" style="width: 320px; height: 320px; border-radius: 20px"><video class="med" src="media/g_silh.mp4" autoplay="" muted="" loop="" playsinline="" preload="auto"></video></div>
+<div class="vid" style="width: 520px; height: 320px; border-radius: 20px"><video class="med" src="media/g_mma.mp4" autoplay="" muted="" loop="" playsinline="" preload="auto"></video></div>
+<div class="vid" style="width: 360px; height: 320px; border-radius: 20px"><video class="med" src="media/g_ring.mp4" autoplay="" muted="" loop="" playsinline="" preload="auto"></video></div>
+<div class="vid" style="width: 460px; height: 320px; border-radius: 20px"><video class="med" src="media/g_pull.mp4" autoplay="" muted="" loop="" playsinline="" preload="auto"></video></div>
+<div class="vid" style="width: 320px; height: 320px; border-radius: 20px"><video class="med" src="media/g_close.mp4" autoplay="" muted="" loop="" playsinline="" preload="auto"></video></div>
+</div>
+<div class="hx" style="display: flex; gap: 20px; width: max-content; margin-top: 20px; margin-left: 200px">
+<div class="vid" style="width: 360px; height: 240px; border-radius: 20px"><video class="med" src="media/g_bag.mp4" autoplay="" muted="" loop="" playsinline="" preload="auto"></video></div>
+<div class="vid" style="width: 520px; height: 240px; border-radius: 20px"><video class="med" src="media/g_box.mp4" autoplay="" muted="" loop="" playsinline="" preload="auto"></video></div>
+<div class="vid" style="width: 400px; height: 240px; border-radius: 20px"><video class="med" src="media/g_pro.mp4" autoplay="" muted="" loop="" playsinline="" preload="auto"></video></div>
+<div class="vid" style="width: 460px; height: 240px; border-radius: 20px"><video class="med" src="media/g_morning.mp4" autoplay="" muted="" loop="" playsinline="" preload="auto"></video></div>
+<div class="vid" style="width: 360px; height: 240px; border-radius: 20px"><video class="med" src="media/g_kettle.mp4" autoplay="" muted="" loop="" playsinline="" preload="auto"></video></div>
+</div>
+</section>
+
+<!-- HOW IT WORKS: stacked sticky panels -->
+<section style="padding: 0 0 160px">
+<div class="wrap">
+<div class="rv" style="margin-bottom: 56px">
+<div class="m" style="color: var(--ac); margin-bottom: 18px">[ 03 ] Day one</div>
+<h2 class="d" style="font-size: clamp(48px, 6vw, 88px)">Never trained?<br><span class="ol">Good. Start here.</span></h2>
+</div>
+<div style="display: flex; flex-direction: column; gap: 40px">
+<div class="stk" style="background: #1A1A18">
+<div style="display: flex; flex-direction: column; justify-content: space-between; gap: 32px">
+<span class="d" style="font-size: 120px; color: var(--ac)">01</span>
+<div><h3 class="d" style="font-size: 56px; margin-bottom: 18px">Book a free class</h3><p class="dim" style="margin: 0; font-size: 18px; line-height: 1.55; max-width: 440px">Pick any discipline on the schedule. Show up ten minutes early in gym clothes — we'll handle gloves and a gi.</p></div>
+</div>
+<div class="vid" style="border-radius: 18px; min-height: 340px"><video class="med" src="media/p1.mp4" autoplay="" muted="" loop="" playsinline="" preload="auto"></video></div>
+</div>
+<div class="stk" style="background: #ECE8DF; color: #0B0B0A; top: 120px">
+<div style="display: flex; flex-direction: column; justify-content: space-between; gap: 32px">
+<span class="d" style="font-size: 120px">02</span>
+<div><h3 class="d" style="font-size: 56px; margin-bottom: 18px">Meet your coach</h3><p style="margin: 0; font-size: 18px; line-height: 1.55; max-width: 440px; color: #3A3934">A quick chat about your goals and experience, then straight into a beginner-friendly class with people at your level.</p></div>
+</div>
+<div class="vid" style="border-radius: 18px; min-height: 340px"><video class="med" src="media/p2.mp4" autoplay="" muted="" loop="" playsinline="" preload="auto"></video></div>
+</div>
+<div class="stk" style="background: var(--ac); color: #0B0B0A; top: 144px">
+<div style="display: flex; flex-direction: column; justify-content: space-between; gap: 32px">
+<span class="d" style="font-size: 120px">03</span>
+<div><h3 class="d" style="font-size: 56px; margin-bottom: 18px">Find your rhythm</h3><p style="margin: 0; font-size: 18px; line-height: 1.55; max-width: 440px">Mix disciplines however you like. Most members land on three to four sessions a week within the first month.</p></div>
+</div>
+<div class="vid" style="border-radius: 18px; min-height: 340px"><video class="med" src="media/p3.mp4" autoplay="" muted="" loop="" playsinline="" preload="auto"></video></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SCHEDULE -->
+<section id="schedule" style="padding: 120px 0 160px; background: #121211; border-top: 1px solid rgba(236,232,223,.08)">
+<div class="wrap">
+<div class="rv" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 28px; margin-bottom: 48px">
+<div>
+<div class="m" style="color: var(--ac); margin-bottom: 18px">[ 04 ] Schedule</div>
+<h2 class="d" style="font-size: clamp(48px, 6vw, 88px)">This week<br><span class="ol">on the mats.</span></h2>
+</div>
+<div role="tablist" aria-label="Day" style="display: flex; gap: 8px; flex-wrap: wrap">
+<span id="days" style="display: contents"></span>
+</div>
+</div>
+<div class="m dim" style="display: grid; grid-template-columns: 120px minmax(0,1.4fr) minmax(0,1fr) auto; gap: 20px; padding-bottom: 14px; font-size: 10px">
+<span>Time</span><span>Class</span><span class="hide-s">Coach</span><span class="hide-s">Level</span>
+</div>
+<div id="sched"></div>
+<p class="m dim" style="margin: 28px 0 0; font-size: 10px">Sample timetable — replace with real class times.</p>
+</div>
+</section>
+
+<!-- COACHES -->
+<section id="coaches" style="padding: 160px 0">
+<div class="wrap">
+<div class="rv" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 56px">
+<div>
+<div class="m" style="color: var(--ac); margin-bottom: 18px">[ 05 ] Coaches</div>
+<h2 class="d" style="font-size: clamp(48px, 6vw, 88px)">Coached by people<br><span class="ol">who still compete.</span></h2>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 24px">
+<a class="cc rv" href="#coaches"><div class="vid"><img class="med" src="media/coach1.jpg" alt=""><div class="hov"><p style="margin: 0; font-size: 15px; line-height: 1.45">[Short bio — belt rank, lineage, competition record.]</p></div></div><div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px"><span class="d" style="font-size: 30px; line-height: 1">[Coach name]</span><span class="m dim">BJJ</span></div></a>
+<a class="cc rv" href="#coaches"><div class="vid"><img class="med" src="media/coach2.jpg" alt=""><div class="hov"><p style="margin: 0; font-size: 15px; line-height: 1.45">[Short bio — fight record, gyms trained at.]</p></div></div><div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px"><span class="d" style="font-size: 30px; line-height: 1">[Coach name]</span><span class="m dim">Kickboxing</span></div></a>
+<a class="cc rv" href="#coaches"><div class="vid"><img class="med" src="media/coach3.jpg" alt=""><div class="hov"><p style="margin: 0; font-size: 15px; line-height: 1.45">[Short bio — amateur / pro record.]</p></div></div><div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px"><span class="d" style="font-size: 30px; line-height: 1">[Coach name]</span><span class="m dim">Boxing</span></div></a>
+<a class="cc rv" href="#coaches"><div class="vid"><img class="med" src="media/coach4.jpg" alt=""><div class="hov"><p style="margin: 0; font-size: 15px; line-height: 1.45">[Short bio — certifications, specialty.]</p></div></div><div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px"><span class="d" style="font-size: 30px; line-height: 1">[Coach name]</span><span class="m dim">Strength</span></div></a>
+</div>
+</div>
+</section>
+
+<!-- MEMBERSHIP -->
+<section id="membership" style="padding: 40px 0 160px">
+<div class="wrap">
+<div class="rv" style="margin-bottom: 56px">
+<div class="m" style="color: var(--ac); margin-bottom: 18px">[ 06 ] Membership</div>
+<h2 class="d" style="font-size: clamp(48px, 6vw, 88px)">Train your way.<br><span class="ol">No contracts.</span></h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 18px">
+<div class="tier rv">
+<div class="m dim">Open gym</div>
+<div class="d" style="font-size: 56px">[Price]<span class="m dim" style="font-size: 12px"> / mo</span></div>
+<p class="dim" style="margin: 0; font-size: 15px; line-height: 1.5">Just here to lift. Full weight room, no classes required.</p>
+<ul><li><span class="dot"></span>Weight room, all open hours</li><li><span class="dot"></span>Conditioning equipment</li><li><span class="dot"></span>Add classes any time</li></ul>
+<a class="btn btn-gh" href="#join" style="margin-top: auto"><span>Start lifting</span><span class="arr">→</span></a>
+</div>
+<div class="tier rv">
+<div class="m dim">Single</div>
+<div class="d" style="font-size: 56px">[Price]<span class="m dim" style="font-size: 12px"> / mo</span></div>
+<p class="dim" style="margin: 0; font-size: 15px; line-height: 1.5">Go deep on one discipline.</p>
+<ul><li><span class="dot"></span>Unlimited classes in one discipline</li><li><span class="dot"></span>Open mat access</li><li><span class="dot"></span>Weight room included</li></ul>
+<a class="btn btn-gh" href="#join" style="margin-top: auto"><span>Start free</span><span class="arr">→</span></a>
+</div>
+<div class="tier rv">
+<div class="m dim">Mix</div>
+<div class="d" style="font-size: 56px">[Price]<span class="m dim" style="font-size: 12px"> / mo</span></div>
+<p class="dim" style="margin: 0; font-size: 15px; line-height: 1.5">Pick any two or three. Boxing and jiu jitsu? Judo and fitness? Your call.</p>
+<ul><li><span class="dot"></span>Any 2–3 disciplines</li><li><span class="dot"></span>Swap your mix monthly</li><li><span class="dot"></span>Weight room included</li></ul>
+<a class="btn btn-gh" href="#join" style="margin-top: auto"><span>Start free</span><span class="arr">→</span></a>
+</div>
+<div class="tier rv" style="background: var(--ac); color: #0B0B0A; border-color: var(--ac)">
+<div class="m" style="display: flex; justify-content: space-between"><span>All access</span><span>[ Everything ]</span></div>
+<div class="d" style="font-size: 56px">[Price]<span class="m" style="font-size: 12px"> / mo</span></div>
+<p style="margin: 0; font-size: 15px; line-height: 1.5">Every class, every mat, every rack. Try it all.</p>
+<ul><li><span class="dot" style="background: #0B0B0A"></span>All five disciplines, unlimited</li><li><span class="dot" style="background: #0B0B0A"></span>Weight room and open mats</li><li><span class="dot" style="background: #0B0B0A"></span>Sparring and comp team sessions</li></ul>
+<a class="btn" href="#join" style="margin-top: auto; background: #0B0B0A; color: #ECE8DF"><span>Start free</span><span class="arr">→</span></a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CTA + FOOTER -->
+<section id="join" style="position: relative; padding: 140px 0 0; border-top: 1px solid rgba(236,232,223,.1); overflow: clip">
+<div class="mq" style="font-size: clamp(90px, 16vw, 250px)">
+<div class="mq-t"><span class="d">Your first class is free</span><span class="d" style="color: var(--ac)">✦</span><span class="d ol">Your first class is free</span><span class="d" style="color: var(--ac)">✦</span></div>
+<div class="mq-t" aria-hidden="true"><span class="d">Your first class is free</span><span class="d" style="color: var(--ac)">✦</span><span class="d ol">Your first class is free</span><span class="d" style="color: var(--ac)">✦</span></div>
+</div>
+<div class="wrap" style="padding-top: 80px; padding-bottom: 48px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 56px; padding-bottom: 96px">
+<div class="rv">
+<h3 class="d" style="font-size: 56px; margin-bottom: 20px">Get on the mats.</h3>
+<p class="dim" style="margin: 0 0 28px; font-size: 17px; line-height: 1.55; max-width: 420px">Drop your email and we'll send the schedule plus a free class pass.</p>
+<form style="display: flex; gap: 12px; align-items: flex-end; max-width: 520px">
+<label for="em" class="m" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Email</label>
+<input id="em" class="em" type="email" placeholder="you@email.com">
+<button class="btn" type="button" style="border: 0; cursor: pointer; font-family: inherit"><span>Send pass</span><span class="arr">→</span></button>
+</form>
+</div>
+<div class="rv" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 12px"><span class="m dim">Visit</span><span style="font-size: 17px; line-height: 1.5">[Street address]<br>Castro Valley, CA</span><a class="lk" href="#join" style="font-size: 15px">Get directions <span class="arr" style="display: inline-block">→</span></a></div>
+<div style="display: flex; flex-direction: column; gap: 12px"><span class="m dim">Hours</span><span style="font-size: 17px; line-height: 1.5">[Weekday hours]<br>[Weekend hours]</span></div>
+<div style="display: flex; flex-direction: column; gap: 12px"><span class="m dim">Contact</span><a href="#join" style="font-size: 17px">[Phone]</a><a href="#join" style="font-size: 17px">[Email]</a></div>
+<div style="display: flex; flex-direction: column; gap: 12px"><span class="m dim">Follow</span><a href="#join" style="font-size: 17px">Instagram</a><a href="#join" style="font-size: 17px">YouTube</a><a href="#join" style="font-size: 17px">TikTok</a></div>
+</div>
+</div>
+<div class="d" style="font-size: clamp(120px, 27vw, 400px); line-height: .78; color: #1C1C1A; letter-spacing: -.01em; user-select: none" aria-hidden="true">CVCC</div>
+<div class="m dim" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; padding-top: 28px; border-top: 1px solid rgba(236,232,223,.1); font-size: 10px">
+<span>© 2026 Castro Valley Combat Club</span><span>Boxing / BJJ / Kickboxing / Strength</span><a href="#top">Back to top ↑</a>
+</div>
+</div>
+</section>
+
+</div>
+<script>
+(function(){
+var AC='#FF3B1F';
+var tt={MON:[['6:00 AM','Strength & Conditioning','[Coach]','All levels'],['12:00 PM','BJJ Fundamentals','[Coach]','Beginner'],['5:30 PM','Boxing','[Coach]','All levels'],['6:30 PM','Kickboxing','[Coach]','All levels'],['7:30 PM','BJJ Advanced','[Coach]','Intermediate']],
+TUE:[['6:00 AM','Boxing Conditioning','[Coach]','All levels'],['12:00 PM','No-Gi','[Coach]','All levels'],['5:30 PM','Muay Thai','[Coach]','All levels'],['6:30 PM','BJJ Fundamentals','[Coach]','Beginner'],['7:30 PM','Sparring','[Coach]','Advanced']],
+WED:[['6:00 AM','Strength & Conditioning','[Coach]','All levels'],['12:00 PM','BJJ Fundamentals','[Coach]','Beginner'],['5:30 PM','Boxing','[Coach]','All levels'],['6:30 PM','Kickboxing','[Coach]','All levels'],['7:30 PM','BJJ Advanced','[Coach]','Intermediate']],
+THU:[['6:00 AM','Boxing Conditioning','[Coach]','All levels'],['12:00 PM','No-Gi','[Coach]','All levels'],['5:30 PM','Muay Thai','[Coach]','All levels'],['6:30 PM','BJJ Fundamentals','[Coach]','Beginner'],['7:30 PM','Competition Team','[Coach]','Advanced']],
+FRI:[['6:00 AM','Strength & Conditioning','[Coach]','All levels'],['12:00 PM','Open Mat','—','All levels'],['5:30 PM','Boxing','[Coach]','All levels'],['6:30 PM','Kickboxing','[Coach]','All levels']],
+SAT:[['9:00 AM','Kids BJJ','[Coach]','Ages [X–X]'],['10:00 AM','BJJ All Levels','[Coach]','All levels'],['11:30 AM','Open Mat','—','All levels'],['12:30 PM','Sparring','[Coach]','Advanced']]};
+var day='MON';
+function esc(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+function renderSched(){
+ document.getElementById('days').innerHTML=Object.keys(tt).map(function(d){var on=d===day;return '<button class="day" role="tab" aria-selected="'+on+'" data-d="'+d+'" style="'+(on?'background:'+AC+';color:#0B0B0A;border:1px solid '+AC:'background:transparent;color:#ECE8DF;border:1px solid rgba(236,232,223,.3)')+'">'+d+'</button>'}).join('');
+ document.getElementById('sched').innerHTML=tt[day].map(function(r,i){return '<div class="srow" style="animation-delay:'+(i*70)+'ms"><span class="m" style="font-size:14px">'+esc(r[0])+'</span><span class="d" style="font-size:34px;line-height:1">'+esc(r[1])+'</span><span class="hide-s dim" style="font-size:16px">'+esc(r[2])+'</span><span class="hide-s m chip" style="justify-self:end">'+esc(r[3])+'</span></div>'}).join('');
+}
+document.getElementById('days').addEventListener('click',function(e){var b=e.target.closest('[data-d]');if(b){day=b.dataset.d;renderSched()}});
+var opts=[['box','Boxing','Hands, feet, defense'],['bjj','Jiu Jitsu','Gi and no-gi'],['kick','Kickboxing','Muay Thai style'],['judo','Judo','Throws and grips'],['fit','Fitness','CrossFit-style conditioning'],['wr','Weight room','Open gym, lift on your own']];
+var sel=['bjj','box'];
+var tick='<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6.5l2.5 2.5L10 3.5" fill="none" stroke="currentColor" stroke-width="2"></path></svg>';
+function renderB(){
+ document.getElementById('tiles').innerHTML=opts.map(function(o,i){var on=sel.indexOf(o[0])>-1;return '<button class="tile" type="button" aria-pressed="'+on+'" data-o="'+o[0]+'" style="'+(on?'background:'+AC+';color:#0B0B0A;border-color:'+AC:'background:transparent;color:#ECE8DF')+'"><span style="display:flex;justify-content:space-between;align-items:center;width:100%"><span class="m" style="opacity:.7">[ 0'+(i+1)+' ]</span><span class="tick">'+(on?tick:'')+'</span></span><span><span class="d" style="display:block;font-size:38px;line-height:.95">'+o[1]+'</span><span style="display:block;margin-top:8px;font-size:13px;opacity:.75">'+o[2]+'</span></span></button>'}).join('');
+ var cl=sel.filter(function(x){return x!=='wr'}),wr=sel.indexOf('wr')>-1,n=cl.length,plan='—',note='Tap the disciplines you want to train.';
+ if(n===0&&wr){plan='Open gym';note='Weight room only. Add a class whenever you are ready.'}else if(n===1){plan='Single';note='Unlimited classes in one discipline, weight room included.'}else if(n===2||n===3){plan='Mix';note='Any two or three disciplines, weight room included. Swap your mix monthly.'}else if(n>=4){plan='All access';note='Everything in the building. Every class, every mat, every rack.'}
+ var names=opts.filter(function(o){return sel.indexOf(o[0])>-1}).map(function(o){return o[1]});
+ var bn=document.getElementById('bn');bn.textContent=(sel.length<10?'0':'')+sel.length;bn.style.animation='none';void bn.offsetWidth;bn.style.animation='up .5s cubic-bezier(.2,.8,.2,1)';
+ document.getElementById('unit').textContent=(n===0&&!wr)?'Nothing picked yet':(n===1?'1 discipline':n+' disciplines')+(wr?' + weight room':'');
+ document.getElementById('picked').textContent=names.length?names.join(' · '):'Start with one. Add more any time.';
+ document.getElementById('plan').textContent=plan;document.getElementById('planNote').textContent=note;
+}
+document.getElementById('tiles').addEventListener('click',function(e){var b=e.target.closest('[data-o]');if(!b)return;var id=b.dataset.o;var i=sel.indexOf(id);if(i>-1)sel.splice(i,1);else sel.push(id);renderB()});
+document.getElementById('selAll').addEventListener('click',function(){sel=opts.map(function(o){return o[0]});renderB()});
+document.getElementById('clr').addEventListener('click',function(){sel=[];renderB()});
+renderSched();renderB();
+document.querySelectorAll('video').forEach(function(v){v.muted=true;var p=v.play();if(p&&p.catch)p.catch(function(){})});
+})();
+</script>
+</body>
+</html>
